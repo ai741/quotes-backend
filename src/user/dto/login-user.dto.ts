@@ -1,13 +1,9 @@
 import { IsEmail, Length } from 'class-validator';
 
-export class CreateUserDto {
-  @Length(3, 24)
-  username: string;
-
+export class LoginUserDto {
   @IsEmail()
   email: string;
 
   @Length(6, 24)
   password?: string;
-
 }

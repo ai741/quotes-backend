@@ -8,6 +8,7 @@ import { QuotesModule } from './quotes/quotes.module';
 import { QuotesEntity } from './quotes/entities/quote.entity';
 import { CommentsModule } from './comments/comments.module';
 import { CommentEntity } from './comments/entities/comment.entity';
+import { AuthModule } from './auth/auth.module';
 import * as dotenv from 'dotenv'; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 dotenv.config();
 
@@ -26,6 +27,7 @@ dotenv.config();
     UserModule,
     QuotesModule,
     CommentsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

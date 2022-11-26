@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
+import { LoginUserDto } from './dto/login-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UserEntity } from './entities/user.entity';
 
@@ -20,8 +21,14 @@ export class UserService {
     return this.repository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  findOneById(id: number) {
+    return this.repository.findOne({ where: { id } });
+  }
+
+  findOneCond(cond: LoginUserDto) {
+    return this.repository.findOne({
+      where: { email: cond.email, password: cond.password },
+    });
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
@@ -29,6 +36,6 @@ export class UserService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} user`;
+    return this.repository.delete(id);
   }
 }
