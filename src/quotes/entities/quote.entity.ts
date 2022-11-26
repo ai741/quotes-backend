@@ -17,6 +17,11 @@ export class QuotesEntity {
   @Column()
   category: string;
 
+  @Column({
+    default: 0,
+  })
+  views: number;
+
   @Column()
   tags: string;
 

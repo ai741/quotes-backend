@@ -5,12 +5,14 @@ import {
   Post,
   Body,
   Patch,
+  Query,
   Param,
   Delete,
 } from '@nestjs/common';
 import { QuotesService } from './quotes.service';
 import { CreateQuoteDto } from './dto/create-quote.dto';
 import { UpdateQuoteDto } from './dto/update-quote.dto';
+import { SearchQuoteDto } from './dto/search-quotes.dto';
 
 @Controller('quotes')
 export class QuotesController {
@@ -24,6 +26,16 @@ export class QuotesController {
   @Get()
   findAll() {
     return this.quotesService.findAll();
+  }
+
+  @Get('/popular')
+  getPopupular() {
+    return this.quotesService.popular();
+  }
+
+  @Get('/search')
+  searchQuotes(@Query() dto: SearchQuoteDto) {
+    return this.quotesService.search(dto);
   }
 
   @Get(':id')
