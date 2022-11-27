@@ -1,4 +1,7 @@
 import { IsEmail, Length } from 'class-validator';
+import { UniqueOnDatabase } from 'src/auth/validations/unique-validation';
+import { Unique } from 'typeorm';
+import { UserEntity } from '../entities/user.entity';
 
 export class CreateUserDto {
   @Length(3, 24)
